@@ -1,0 +1,43 @@
+kind: Deployment
+apiVersion: apps/v1
+
+metadata: 
+
+  
+  name: mysql-dep
+  namespace: mysql-ns
+  labels:
+
+    app: mysql
+spec:
+
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      name: mysql-pod
+      namespace: mysql-ns
+      labels:
+        app: mysql
+    spec:
+
+      containers:
+      - name: mysql
+        image: mysql:latest
+        ports:
+        - containerPort: 3306
+
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: password
+
+        - name: MYSQL-DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: mysql-config-map
+              key: database
