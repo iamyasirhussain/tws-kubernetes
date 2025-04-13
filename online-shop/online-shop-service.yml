@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service 
 metadata: 
   name: online-shop-svc 
-  Namespace: online-shop-ns 
+  namespace: online-shop-ns 
 spec: 
   selector: 
     app: online-shop 
