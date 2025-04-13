@@ -6,8 +6,8 @@ metadata:
 spec: 
   storageClassName: standard 
   capacity: 
-    storage: 1Gi 
-  accessModes: 
-	- ReadWriteOnce 
+    storage: 2Gi 
+  accessModes:
+  - ReadWriteOnce 
   hostPath: 
     path: "/mnt/data"
