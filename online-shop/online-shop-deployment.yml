@@ -6,21 +6,30 @@ metadata:
   namespace: online-shop-ns 
   labels: 
     app: online-shop 
-spec: 
-  replicas: 2 
-  selector: 
-    matchLabels: 
+spec:
+ replicas: 2 
+ selector:
+    matchLabels:
       app: online-shop 
  
-  template: 
-    metadata: 
-      name: online-shop-pod 
-      namespace: online-shop-ns 
-      labels: 
-        app: online-shop 
-  spec: 
+ template:
+   metadata:
+    name: online-shop-pod 
+    namespace: online-shop-ns 
+    labels:
+     app: online-shop
+
+   spec:
     containers: 
     - name: online-shop-container 
       image: hussainy/online-shop-k8s:latest 
-    ports: 
-    - containerPort: 80
+      ports: 
+      - containerPort: 80
+    # this is advanced level concept where we set the limits of each pod's utilization
+      resources:       
+        requests:
+          cpu: 100m
+          memory: 256Mi
+        limits:
+         cpu: 200m
+         memory: 512Mi
