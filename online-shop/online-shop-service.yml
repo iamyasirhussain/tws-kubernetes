@@ -7,6 +7,6 @@ spec:
   selector: 
     app: online-shop 
   ports: 
-        - protocol: TCP 
-      port: 80                  # cluster / host port  [service] 
-      targetPort: 80    # container/pod port 
+  - protocol: TCP 
+    port: 80                  # cluster / host port  [service] 
+    targetPort: 80    # container/pod port 
