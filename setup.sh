@@ -8,6 +8,14 @@ install_kind() {
     sudo mv ./kind /usr/local/bin/kind
 }
 
+install_helm() {
+    
+    curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+    chmod 700 get_helm.sh
+    ./get_helm.sh
+    helm version
+}
+
 install_kubectl() {
     echo "Installing kubectl..."
     curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -30,3 +38,5 @@ install_kubectl
 echo -e "\nInstallation complete!"
 echo "Kind version: $(kind version)"
 echo "kubectl version: $(kubectl version --client)"
+
+
